@@ -3,12 +3,14 @@ import axiosInstance from "../../Helpers/axios.helper"
 import {toast} from "react-hot-toast"
 const initialState =  {
     isLoggedIn : localStorage.getItem("isLoggedIn") || false, 
-    data : localStorage.getItem("data" ) || { } 
+    data :JSON.parse( localStorage.getItem("data" ) )|| { } 
 }
 
-export const createAccount = createAsyncThunk("auth/signup", async (data ) => {
+export const createNewAccount = createAsyncThunk("auth/signup", async (data ) => {
     try {
-        const response = axiosInstance.post("/user/register"  ,data) 
+        console.log(data)
+        const response = axiosInstance.post("user/register"  ,data)  
+        console.log((await response).data)
         toast.promise(response , {
             loading : "Wait Creating Account", 
             success : "User Created Successfully", 
@@ -21,15 +23,15 @@ export const createAccount = createAsyncThunk("auth/signup", async (data ) => {
         toast.error(e?.response?.data?.message)
     }
 }) 
-export const login  =createAsyncThunk("/auth/signin" , (data) => {
+export const login  =createAsyncThunk("/auth/signin" , async (data) => {
     try {
-        const response = axiosInstance.post("/user/login" ,data)  
+        const response = axiosInstance.post("user/login" ,data)  
         toast.promise(response , {
             loading : "Authenticating .... ", 
             success : "Logged in Successfully", 
             error : "Error in logging in . "
         })
-        return d
+        return (await response).data
     } catch (e) {
         toast.error(e.response?.data?.message )
     }
@@ -41,7 +43,13 @@ const authSlice  = createSlice({
     name:  "auth", 
     initialState , 
     reducers : {}, 
-    extraReducers :(builder) => {
+    extraReducers :(builder) => { 
+        builder.addCase(login.fulfilled , (state ,action) => {
+            localStorage.setItem("data" ,JSON.stringify(action?.payload?.user)); 
+            localStorage.setItem("isLoggedIn" ,true ) 
+            state.isLoggedIn =true 
+            state.data =action.payload?.user
+        })
         
     }
 })
