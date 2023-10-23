@@ -1,18 +1,41 @@
 import {FiLink} from "react-icons/fi"
 import {BsArrowRightCircleFill }  from "react-icons/bs"
 import { useState } from "react"
-function SearchInput()  {
-    const [url  ,setUrl ] = useState ("") 
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { getShort } from "../Redux/Slices/url.slice";
+import { ThreeDots } from "react-loader-spinner";
+function SearchInput()  { 
+    const data= useSelector(state => state.url ) 
+    console.log(data) ;
 
+    const [url  ,setUrl ] = useState ("") 
+    const dispatch= useDispatch()
+    const [loader, showLoader]  = useState(false);
 
     function handleUserInput(e) { 
-        const  { value } = e.target; 
+        const  { value } = e.target;  
+        
         setUrl(value);
     } 
-    function getShortUrl   ( e)  {
-        e.preventDefault();
+    async function getShortUrl   ( e)  { 
+        e.preventDefault();  
+        if(!url)  {
+            toast.error("Please give a Url");
+            return ;
+        }
+        const obj ={
+            "longUrl":url
+        }
+        const response = await  dispatch(getShort(obj   ));
+        if(response?.payload?.success) {
+            toast.success("Url Created SuccessFully ")
+        }
         
-    }
+
+        
+    } 
+    
     return ( 
         
         <div className=""  >
@@ -21,10 +44,28 @@ function SearchInput()  {
                 <label  className="text-white text-2xl" htmlFor="url">
                      < FiLink/>
                 </label>
-                <input value={url}  onChange={handleUserInput} className=" bg-transparent outline-none  text-xl w-3/4" type="text" name="url" id="url"  placeholder="Enter the Link Here " /> 
+                
+                <input value={url}  onChange={handleUserInput} className=" bg-transparent outline-none line-clamp-1  text-xl w-3/4" type="text" name="url" id="url"  placeholder="Enter the Link Here " /> 
+                
+                {loader===true  ? (
 
-                <button className="bg-primary-blue  md:hidden  rounded-full text-white p-3" type="submit"> <BsArrowRightCircleFill/> </button>
-                <button className="bg-primary-blue  xx_small:hidden  extra_small:hidden sm:hidden md:flex rounded-full text-white p-3" type="submit"> Shorten Now! </button>
+                    <ThreeDots 
+                        height="80" 
+                        width="80" 
+                        radius="9"
+                        color="#4fa94d" 
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClassName=""
+                        visible={true}
+                        />
+                ):(
+
+                <div>
+                    <button className="bg-primary-blue  md:hidden  rounded-full text-white p-3" type="submit"> <BsArrowRightCircleFill/> </button>
+                    <button className="bg-primary-blue  xx_small:hidden  extra_small:hidden sm:hidden md:flex rounded-full text-white p-3" type="submit"> Shorten Now! </button>
+                </div>
+                )}
 
             </form>
         </div>

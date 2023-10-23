@@ -1,3 +1,4 @@
+import DisplayUrl from "../Components/DisplayUrl";
 import Hero from "../Components/Hero";
 import Navbar from "../Components/Navbar";
 import SearchInput from "../Components/SearchInput";
@@ -13,6 +14,9 @@ function HomePage() {
             </div> 
             <div  className="w-3/4">
                 <SearchInput/>
+            </div> 
+            <div>
+                <DisplayUrl/>
             </div>
         </div>
     )

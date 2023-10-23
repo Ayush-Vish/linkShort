@@ -19,8 +19,8 @@ function Navbar () {
                     Welcome <span>{data.name}</span>
                 </button>
                 <button  className="  flex-col md:hidden  border-primary-grey   p-1  flex justify-center text-[#ffffff]  items-center bg-primary-grey border rounded-lg px-2 hover:bg-primary-blue hover:shadow-[10px_9px_22px_0px_rgba(20,78,227,0.38)]  transition-all ease-in-out duration-300  ">
-                     <span>{data.name}</span>
-                </button>
+                      <span>{data.name.split(" ")[0]}</span>
+                 </button>
                 </div>
             ):(
                 
