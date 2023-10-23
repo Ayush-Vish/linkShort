@@ -1,10 +1,13 @@
+import { useSelector } from "react-redux";
 import DisplayUrl from "../Components/DisplayUrl";
 import Hero from "../Components/Hero";
 import Navbar from "../Components/Navbar";
 import SearchInput from "../Components/SearchInput";
 import BasicTable from "../Components/Stats";
 
-function HomePage() {
+function HomePage() { 
+    const {isLoggedIn} = useSelector(state => state.auth);
+
     return (
         <div  className= " flex w-full  md:h-[100vh]   items-center flex-col   gap-3 bg-primary-black ">
             <div className="w-full ">
@@ -13,16 +16,20 @@ function HomePage() {
             <div  className= "mt-20  w-3/4" >
                 <Hero/>
             </div> 
-            <div  className="w-3/4">
+            <div  className="w-3/4   lg:w-1/2 ">
                 <SearchInput/>
             </div> 
             <div>
                 <DisplayUrl/>
             </div> 
-            <div className="w-3/4">
-                <BasicTable/>
+            {
+                isLoggedIn && (
+                    <div className="w-3/4">
+                        <BasicTable/>
 
-            </div>
+                    </div>
+                ) 
+            }
         </div>
     )
 }

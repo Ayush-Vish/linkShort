@@ -31,16 +31,16 @@ export default function BasicTable() {
     },[])
 
   return (
-    <TableContainer component={Paper} sx={{background:"#353C4A"}} >
-      <Table sx={{ minWidth: 650  , background:"#353C4A" }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Original URL</TableCell>
-            <TableCell align="right">LinkShort URL </TableCell>
-            <TableCell align="right">Clicks</TableCell>
-            <TableCell align="right">Status</TableCell>
-            <TableCell align="right">Action</TableCell>
-            <TableCell align="right">QR Code</TableCell>
+    <TableContainer className='  backdrop-blur-sm ' component={Paper} sx={{background:"transparent"}} >
+      <Table sx={{ minWidth: 650   }} aria-label="simple table">
+        <TableHead> 
+          <TableRow  >
+            <TableCell sx={{color:"white" , fontWeight:"900"}} >Original URL</TableCell>
+            <TableCell sx={{color:"white" , fontWeight:"900"}} align="right">LinkShort URL </TableCell>
+            <TableCell sx={{color:"white" , fontWeight:"900"}} align="right">Clicks</TableCell>
+            <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">Status</TableCell>
+            <TableCell sx={{color:"white" , fontWeight:"900"}} align="right">Action</TableCell>
+            <TableCell sx={{color:"white" , fontWeight:"900"}} align="right">QR Code</TableCell>
 
           </TableRow>
         </TableHead>
@@ -50,20 +50,29 @@ export default function BasicTable() {
               key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row"> {row.longUrl}</TableCell>
-              <TableCell align="right">{row.linkShortUrl}</TableCell>
-              <TableCell align="right">{row.clicks}</TableCell>
-              <TableCell align="right">{row.status}</TableCell>
-              <TableCell align="right">{row.action}</TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} component="th" scope="row">  <a href={row.longUrl}>{row.longUrl}</a>  </TableCell>
+              <TableCell  sx={{color:"#EB568E" , fontWeight:"900"}} align="right">  <a href={row.linkShortUrl}> { row.linkShortUrl} </a>  </TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.clicks}</TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.status}</TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.action}</TableCell>
             </TableRow>
           )).slice(prevPage,nextPage)}
         </TableBody>
       </Table>
-    <div className='text-primary-pink flex justify-center gap-3'>
-            <button   >
+    <div className='text-white flex justify-center items-center gap-3'>
+            <button className='px-2 py-1 rounded-md bg-primary-blue  border mb-2 '  disabled={prevPage===0}  onClick={() => {
+                setPrevPage(prevPage - 5 );
+                setNextPage(nextPage -5 ); 
+                
+            }}  >
                 Prev
             </button> 
-            <button>
+            <button className='px-2 py-1 rounded-md bg-primary-blue  border mb-2 ' disabled={nextPage>=data.allUrls.length -5} onClick={() =>{ 
+                setPrevPage(prevPage + 5 );
+                setNextPage(nextPage +5 ); 
+
+
+            }}>
                 Next
             </button>
     </div>

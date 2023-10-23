@@ -7,13 +7,7 @@ import copyToClipBoard from "../Helpers/copyToClipBoard.helper";
 function DisplayUrl ( )  { 
     const {shortUrl , longUrl}= useSelector((state) => state.url );  
 
-    function openLink (e ) {   
-        console.log(shortUrl)
-        e.preventDefault() ;
-        window.open(shortUrl ,'_blank')
-
-
-    } 
+    
     
     return (  
 
@@ -24,8 +18,10 @@ function DisplayUrl ( )  {
                 <h6 className="" >
                     Short Link 
                 </h6>
-                <button   onClick={  (e) =>   openLink(e)} className="font-semibold text-primary-pink   "  >    
-                        {shortUrl} 
+                <button    className="font-semibold text-primary-pink   "  >    
+                       <a href={shortUrl}>
+                            {shortUrl}
+                        </a>
                 </button>
                 <button onClick={() => copyToClipBoard(shortUrl) }  className="text-green-400">
                     <ContentCopyIcon/>
