@@ -1,6 +1,6 @@
 import {FiLink} from "react-icons/fi"
 import {BsArrowRightCircleFill }  from "react-icons/bs"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { getShort } from "../Redux/Slices/url.slice";
@@ -35,7 +35,9 @@ function SearchInput()  {
 
         
     } 
-    
+    useEffect(() => {
+        getShortUrl()
+    },[url])
     return ( 
         <div className=""  >
             <form onSubmit={getShortUrl} className="text-white flex items-center justify-around p-3  rounded-2xl bg-primary-grey  border-2 border-[#353C4A ] " >

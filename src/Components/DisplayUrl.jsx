@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import toast from "react-hot-toast";
+import copyToClipBoard from "../Helpers/copyToClipBoard.helper";
 
 
 function DisplayUrl ( )  { 
@@ -13,29 +14,20 @@ function DisplayUrl ( )  {
 
 
     } 
-    function copyToClipBoard ( )  {
-        const input = document.createElement("input");
-        input.value= shortUrl;
-        document.body.appendChild(input);
-        input.select() ;
-        document.execCommand("copy");
-        document.body.removeChild(input) ;
-        toast.success("URL Copied");
-
-    }
+    
     return (  
 
 
         shortUrl&& longUrl && (
 
-            <div className="text-white flex flex-col justify-center items-center  md:flex-row gap-2  bg-primary-grey p-4 ">  
+            <div className="text-white flex flex-col justify-center items-center  md:flex-row gap-2 xx_small:gap-1   p-4 ">  
                 <h6 className="" >
                     Short Link 
                 </h6>
-                <button   onClick={openLink} className="font-semibold text-primary-pink   "  >    
+                <button   onClick={  (e) =>   openLink(e)} className="font-semibold text-primary-pink   "  >    
                         {shortUrl} 
                 </button>
-                <button onClick={copyToClipBoard} className="text-green-400">
+                <button onClick={() => copyToClipBoard(shortUrl) }  className="text-green-400">
                     <ContentCopyIcon/>
                 </button > 
 

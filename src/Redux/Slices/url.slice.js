@@ -4,7 +4,8 @@ import toast from "react-hot-toast"
 
 const initialState = {
     shortUrl : "",
-    longUrl:"",
+    longUrl:"", 
+    allUrls : []
 }
 
 export const getShort = createAsyncThunk("/url/getUrl" , async ( url   ) => { 
@@ -25,6 +26,21 @@ export const getShort = createAsyncThunk("/url/getUrl" , async ( url   ) => {
     }
 })
 
+export const getAllUrls = createAsyncThunk("/url/getUserUrls" , async ( ) => {
+    try { 
+        const response  = axiosInstance.get("/url/getAllUrls") 
+        toast.promise(response ,  {
+            loading:"Wait Loding Urls ",
+            success : "Urls fetchde Successfully", 
+            error : "Error in Loding Urls" 
+        }) 
+        return (await response).data;
+
+        
+    } catch (error) {
+        toast.error(error?.response?.data?.message); 
+    }
+})
 
 const urlSlice = createSlice({
     name : "url", 
@@ -37,9 +53,13 @@ const urlSlice = createSlice({
             localStorage.setItem("shortUrl" , action.payload.shortUrl)
             state.longUrl = action.payload.longUrl,
             state.shortUrl = action.payload.shortUrl
+        }), 
+        builder.addCase(getAllUrls.fulfilled , (state , action)=>{ 
+            state.allUrls = action.payload?.urls
         })
     }
 })
+
   
 
 
