@@ -1,10 +1,28 @@
 import { useSelector } from "react-redux";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 function DisplayUrl ( )  { 
-    const {shortUrl , longUrl}= useSelector((state) => state.url ); 
+    const {shortUrl , longUrl}= useSelector((state) => state.url );  
+
+    function openLink (e ) {   
+        console.log(shortUrl)
+        e.preventDefault() ;
+        window.open(shortUrl ,'_blank')
+
+
+    } 
+    function copyToClipBoard ( )  {
+        const input = document.createElement("input");
+        input.value= shortUrl;
+        document.body.appendChild(input);
+        input.select() ;
+        document.execCommand("copy");
+        document.body.removeChild(input) ;
+        toast.success("URL Copied");
+
+    }
     return (  
 
 
@@ -14,12 +32,10 @@ function DisplayUrl ( )  {
                 <h6 className="" >
                     Short Link 
                 </h6>
-                <button disabled className="font-semibold text-primary-pink   "  >    
-                    <Link> 
-                        {shortUrl}
-                    </Link>npm 
+                <button   onClick={openLink} className="font-semibold text-primary-pink   "  >    
+                        {shortUrl} 
                 </button>
-                <button className="text-green-400">
+                <button onClick={copyToClipBoard} className="text-green-400">
                     <ContentCopyIcon/>
                 </button > 
 

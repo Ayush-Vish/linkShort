@@ -37,7 +37,6 @@ function SearchInput()  {
     } 
     
     return ( 
-        
         <div className=""  >
             <form onSubmit={getShortUrl} className="text-white flex items-center justify-around p-3  rounded-2xl bg-primary-grey  border-2 border-[#353C4A ] " >
                  
