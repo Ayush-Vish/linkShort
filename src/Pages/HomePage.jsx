@@ -10,7 +10,7 @@ function HomePage() {
     const {allUrls} = useSelector(state => state.url) 
     
     return (
-        <div  className= " flex h-screen  md:h-[100vh]   items-center flex-col   gap-3 bg-primary-black ">
+        <div  className= " flex min-h-screen items-center flex-col   gap-3 bg-primary-black ">
             <div className="w-full ">
                 <Navbar/>  
             </div>

@@ -3,7 +3,7 @@ import {BsArrowRightCircleFill }  from "react-icons/bs"
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { getShort } from "../Redux/Slices/url.slice";
+import { getAllUrls, getShort } from "../Redux/Slices/url.slice";
 import { ThreeDots } from "react-loader-spinner";
 function SearchInput()  { 
     const data= useSelector(state => state.url ) 
@@ -28,8 +28,10 @@ function SearchInput()  {
             "longUrl":url
         }
         const response = await  dispatch(getShort(obj   ));
-        if(response?.payload?.success) {
-            toast.success("Url Created SuccessFully ")
+        if(response?.payload?.success) { 
+            toast.success("Url Created SuccessFully ") 
+            await dispatch(getAllUrls());
+            
         }
         
 

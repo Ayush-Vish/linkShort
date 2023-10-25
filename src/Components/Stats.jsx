@@ -7,11 +7,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUrls } from '../Redux/Slices/url.slice';
-
+import { deleteUrl, getAllUrls } from '../Redux/Slices/url.slice';
+import { AiFillDelete} from "react-icons/ai"
 function createData(originalUrl, linkShortUrl, clicks, status, action) {
   return { originalUrl, linkShortUrl, clicks, status, action};
-}
+} 
+
 
 
 
@@ -21,14 +22,25 @@ export default function BasicTable() {
     const [prevPage , setPrevPage]= React.useState(0);
     const [nextPage , setNextPage]= React.useState(5);
 
-   
-    console.log(data) 
+    console.log(data);
+    
+    
     async function getData  () { 
         const response =await dispatch(getAllUrls()) 
+    } 
+    async function handleDeleteUrl( e ,url)  { 
+      e.preventDefault();
+
+      await dispatch(deleteUrl(url)) 
+      await dispatch(getAllUrls()) ;
+
     }
     React.useEffect(()=>{
-        getData()
-    },[])
+        getData();
+        handleDeleteUrl();
+
+    },[]) 
+    console.log(prevPage, nextPage)
 
   return (
     <TableContainer className='  backdrop-blur-sm ' component={Paper} sx={{background:"transparent"}} >
@@ -53,8 +65,8 @@ export default function BasicTable() {
               <TableCell  sx={{color:"white" , fontWeight:"900"}} component="th" scope="row">  <a href={row.longUrl}>{row.longUrl}</a>  </TableCell>
               <TableCell  sx={{color:"#EB568E" , fontWeight:"900"}} align="right">  <a href={row.linkShortUrl}> { row.linkShortUrl} </a>  </TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.clicks}</TableCell>
-              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.status}</TableCell>
-              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.action}</TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.status=="ACTIVE" ? (<p className='text-green-500 font-extrabold'  >{row.status}</p>) : (<p>{row.status}</p>)}</TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right"><button className='text-red-500 text-lg' onClick={(e)=> handleDeleteUrl  (e ,row.linkShortUrl)} >  <AiFillDelete   /> </button></TableCell>
             </TableRow>
           )).slice(prevPage,nextPage)}
         </TableBody>
@@ -67,7 +79,7 @@ export default function BasicTable() {
             }}  >
                 Prev
             </button> 
-            <button className='px-2 py-1 rounded-md bg-primary-blue  border mb-2 ' disabled={nextPage>=data?.allUrls?.length -5} onClick={() =>{ 
+            <button className='px-2 py-1 rounded-md bg-primary-blue  border mb-2 ' disabled={(data?.allUrls?.length ) -nextPage <0 } onClick={() =>{ 
                 setPrevPage(prevPage + 5 );
                 setNextPage(nextPage +5 ); 
 

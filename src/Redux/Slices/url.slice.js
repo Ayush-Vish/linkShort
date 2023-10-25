@@ -40,6 +40,24 @@ export const getAllUrls = createAsyncThunk("/url/getUserUrls" , async ( ) => {
     } catch (error) {
         toast.error(error?.response?.data?.message); 
     }
+}) 
+export const deleteUrl = createAsyncThunk("/url/delete" , async (url ) => {  
+
+    try {   
+        const response= axiosInstance.post("/url/deleteUrl", {
+            shortUrl : url
+        }) 
+        toast.promise(response , {
+            loading: "Wait deleting Url...", 
+            success : "Url delete Successfully", 
+            error : "Error in deleting Url"
+        }) 
+        return (await response).data
+        
+    } catch (e) {
+        toast.error(e?.response?.data?.message);
+        
+    }
 })
 
 const urlSlice = createSlice({
@@ -50,10 +68,13 @@ const urlSlice = createSlice({
         builder.addCase(getShort.fulfilled , (state ,action ) => {  
             state.longUrl = action.payload?.longUrl,
             state.shortUrl = action.payload?.shortUrl
-        }), 
-        builder.addCase(getAllUrls.fulfilled , (state , action)=>{ 
+        }) 
+        .addCase(getAllUrls.fulfilled , (state , action)=>{ 
             state.allUrls = action.payload?.urls
-        })
+        }) 
+        
+
+        
     }
 })
 
