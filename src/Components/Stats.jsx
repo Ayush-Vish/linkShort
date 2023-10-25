@@ -67,7 +67,7 @@ export default function BasicTable() {
             }}  >
                 Prev
             </button> 
-            <button className='px-2 py-1 rounded-md bg-primary-blue  border mb-2 ' disabled={nextPage>=data.allUrls.length -5} onClick={() =>{ 
+            <button className='px-2 py-1 rounded-md bg-primary-blue  border mb-2 ' disabled={nextPage>=data?.allUrls?.length -5} onClick={() =>{ 
                 setPrevPage(prevPage + 5 );
                 setNextPage(nextPage +5 ); 
 

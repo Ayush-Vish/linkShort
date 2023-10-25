@@ -25,7 +25,7 @@ export const createNewAccount = createAsyncThunk("auth/signup", async (data ) =>
 }) 
 export const login  =createAsyncThunk("/auth/signin" , async (data) => {
     try {
-        const response = axiosInstance.post("/api/v1/user/login" ,data)  
+        const response = axiosInstance.post("/api/v1/user/login" ,data)   
         toast.promise(response , {
             loading : "Authenticating .... ", 
             success : "Logged in Successfully", 
@@ -36,8 +36,6 @@ export const login  =createAsyncThunk("/auth/signin" , async (data) => {
         toast.error(e.response?.data?.message )
     }
 } )
-
-
 
 const authSlice  = createSlice({
     name:  "auth", 

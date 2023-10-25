@@ -7,9 +7,10 @@ import BasicTable from "../Components/Stats";
 
 function HomePage() { 
     const {isLoggedIn} = useSelector(state => state.auth);
-
+    const {allUrls} = useSelector(state => state.url) 
+    
     return (
-        <div  className= " flex w-full  md:h-[100vh]   items-center flex-col   gap-3 bg-primary-black ">
+        <div  className= " flex h-screen  md:h-[100vh]   items-center flex-col   gap-3 bg-primary-black ">
             <div className="w-full ">
                 <Navbar/>  
             </div>
@@ -23,7 +24,7 @@ function HomePage() {
                 <DisplayUrl/>
             </div> 
             {
-                isLoggedIn && (
+                isLoggedIn &&  allUrls && (
                     <div className="w-3/4">
                         <BasicTable/>
 

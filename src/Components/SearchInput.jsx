@@ -19,7 +19,7 @@ function SearchInput()  {
         setUrl(value);
     } 
     async function getShortUrl   ( e)  { 
-        e.preventDefault();  
+        e.preventDefault() 
         if(!url)  {
             toast.error("Please give a Url");
             return ;
@@ -35,12 +35,10 @@ function SearchInput()  {
 
         
     } 
-    useEffect(() => {
-        getShortUrl()
-    },[url])
+
     return ( 
         <div className=""  >
-            <form onSubmit={getShortUrl} className="text-white flex items-center justify-around p-3  rounded-2xl bg-primary-grey  border-2 border-[#353C4A ] " >
+            <form onSubmit={(e) => getShortUrl(e)} className="text-white flex items-center justify-around p-3  rounded-2xl bg-primary-grey  border-2 border-[#353C4A ] " >
                  
                 <label  className="text-white text-2xl" htmlFor="url">
                      < FiLink/>

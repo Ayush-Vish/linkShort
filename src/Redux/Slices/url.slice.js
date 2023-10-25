@@ -48,11 +48,8 @@ const urlSlice = createSlice({
     reducers : {},
     extraReducers: (builder) =>{ 
         builder.addCase(getShort.fulfilled , (state ,action ) => {  
-            console.log(action.payload) 
-            localStorage.setItem("longUrl" , action.payload.longUrl)
-            localStorage.setItem("shortUrl" , action.payload.shortUrl)
-            state.longUrl = action.payload.longUrl,
-            state.shortUrl = action.payload.shortUrl
+            state.longUrl = action.payload?.longUrl,
+            state.shortUrl = action.payload?.shortUrl
         }), 
         builder.addCase(getAllUrls.fulfilled , (state , action)=>{ 
             state.allUrls = action.payload?.urls
