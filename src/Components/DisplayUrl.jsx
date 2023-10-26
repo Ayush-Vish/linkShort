@@ -16,7 +16,7 @@ function DisplayUrl ( )  {
 
             <div className="text-white flex flex-col justify-center items-center  md:flex-row gap-2 xx_small:gap-1   p-4 ">  
                 <h6 className="" >
-                    Short Link 
+                    LinkShortUrl:  
                 </h6>
                 <button    className="font-semibold text-primary-pink   "  >    
                        <a href={shortUrl}>
