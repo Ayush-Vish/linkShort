@@ -7,7 +7,6 @@ import { getAllUrls, getShort } from "../Redux/Slices/url.slice";
 import { ThreeDots } from "react-loader-spinner";
 function SearchInput()  { 
     const data= useSelector(state => state.url ) 
-    console.log(data) ;
 
     const [url  ,setUrl ] = useState ("") 
     const dispatch= useDispatch()

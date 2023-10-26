@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 
 function copyToClipBoard ( text )  { 
-    console.log("kfbsdjfbskhbflsdfkshdbgfsbhd")
+    
     const input = document.createElement("input");
     input.value= text;
     document.body.appendChild(input);

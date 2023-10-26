@@ -22,14 +22,13 @@ export default function BasicTable() {
     const [prevPage , setPrevPage]= React.useState(0);
     const [nextPage , setNextPage]= React.useState(5);
 
-    console.log(data);
     
     
     async function getData  () { 
         const response =await dispatch(getAllUrls()) 
     } 
     async function handleDeleteUrl( e ,url)  { 
-      e.preventDefault();
+      
 
       await dispatch(deleteUrl(url)) 
       await dispatch(getAllUrls()) ;
@@ -38,9 +37,7 @@ export default function BasicTable() {
     React.useEffect(()=>{
         getData();
         handleDeleteUrl();
-
     },[]) 
-    console.log(prevPage, nextPage)
 
   return (
     <TableContainer className='  backdrop-blur-sm ' component={Paper} sx={{background:"transparent"}} >
@@ -67,6 +64,7 @@ export default function BasicTable() {
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.clicks}</TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.status=="ACTIVE" ? (<p className='text-green-500 font-extrabold'  >{row.status}</p>) : (<p>{row.status}</p>)}</TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right"><button className='text-red-500 text-lg' onClick={(e)=> handleDeleteUrl  (e ,row.linkShortUrl)} >  <AiFillDelete   /> </button></TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.clicks}</TableCell>
             </TableRow>
           )).slice(prevPage,nextPage)}
         </TableBody>
@@ -79,7 +77,7 @@ export default function BasicTable() {
             }}  >
                 Prev
             </button> 
-            <button className='px-2 py-1 rounded-md bg-primary-blue  border mb-2 ' disabled={(data?.allUrls?.length ) -nextPage <0 } onClick={() =>{ 
+            <button className='px-2 py-1 rounded-md bg-primary-blue  border mb-2 ' disabled={(data?.allUrls?.length ) -nextPage <=0 } onClick={() =>{ 
                 setPrevPage(prevPage + 5 );
                 setNextPage(nextPage +5 ); 
 
