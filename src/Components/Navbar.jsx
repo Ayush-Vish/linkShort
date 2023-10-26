@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 function Navbar () { 
-    const {isLoggedIn , data} = useSelector(state => state?.auth)
+    const {isLoggedIn , data} = useSelector(state => (state?.auth))
     const dispatch = useDispatch() 
     
     return ( 

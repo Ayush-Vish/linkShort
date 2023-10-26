@@ -1,9 +1,9 @@
 import axios from "axios"
 
-const BASE_URL = "https://linkshorts.vercel.app/"
+const BASE_URL = "https://linkshorts.vercel.app"
 const axiosInstance = axios.create() 
-axiosInstance.defaults.baseURL = BASE_URL; 
-axiosInstance.defaults.withCredentials =true; 
+axiosInstance.defaults.baseURL =BASE_URL; 
+axiosInstance.defaults.withCredentials=true;  
 
 
 export default axiosInstance;   
