@@ -28,15 +28,11 @@ export default function BasicTable() {
         const response =await dispatch(getAllUrls()) 
     } 
     async function handleDeleteUrl( e ,url)  { 
-      
-
       await dispatch(deleteUrl(url)) 
       await dispatch(getAllUrls()) ;
-
     }
     React.useEffect(()=>{
         getData();
-        handleDeleteUrl();
     },[]) 
 
   return (
