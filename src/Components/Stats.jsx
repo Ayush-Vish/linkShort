@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteUrl, getAllUrls } from '../Redux/Slices/url.slice';
 import { AiFillDelete} from "react-icons/ai"
+import AlertDialogSlide from './AlertDialogSlide';
 function createData(originalUrl, linkShortUrl, clicks, status, action) {
   return { originalUrl, linkShortUrl, clicks, status, action};
 } 
@@ -60,7 +61,7 @@ export default function BasicTable() {
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.clicks}</TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.status=="ACTIVE" ? (<p className='text-green-500 font-extrabold'  >{row.status}</p>) : (<p>{row.status}</p>)}</TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right"><button className='text-red-500 text-lg' onClick={(e)=> handleDeleteUrl  (e ,row.linkShortUrl)} >  <AiFillDelete   /> </button></TableCell>
-              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right"> <   img src={"https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl=" + row.linkShortUrl} className='w-4 h-4'  />    </TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">  <AlertDialogSlide    url={row.linkShortUrl}  />    </TableCell>
             </TableRow>
           )).slice(prevPage,nextPage)}
         </TableBody>
