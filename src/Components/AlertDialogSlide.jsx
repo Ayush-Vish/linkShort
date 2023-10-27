@@ -3,15 +3,16 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+
+ import downloadImage from "../Helpers/downloadImage.helper"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide(   {url}   ) {
+export default function AlertDialogSlide(   {url}   ) { 
+  const URL ="https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl=" +  url
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -25,7 +26,7 @@ export default function AlertDialogSlide(   {url}   ) {
   return (
     <div>
       <Button  onClick={handleClickOpen}>
-            <img src={"https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl=" +  url   }   className='w-4 h-4'  alt="QR" />
+            <img src={URL   }   className='w-4 h-4'  alt="QR" />
       </Button>
       <Dialog
         open={open}
@@ -35,12 +36,12 @@ export default function AlertDialogSlide(   {url}   ) {
         aria-describedby="alert-dialog-slide-description"
       >
         
-        <DialogContent>
-            <img src={"https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl=" +  url   } className='w-28 h-28'  alt="" />
+        <DialogContent sx={{display:"flex"  , justifyContent:"center" , alignItems:"center"}} >
+            <img src={URL} className='w-28 h-28'  alt="" />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Download</Button>
+          <Button onClick={()=> downloadImage(URL ,url) }>Download</Button>
         </DialogActions>
       </Dialog>
     </div>
