@@ -24,8 +24,8 @@ export default function AlertDialogSlide(   {url}   ) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-            <img src={"https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl" +  url   }   className='w-4 h-4'  alt="QR" />
+      <Button  onClick={handleClickOpen}>
+            <img src={"https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl=" +  url   }   className='w-4 h-4'  alt="QR" />
       </Button>
       <Dialog
         open={open}
@@ -36,11 +36,11 @@ export default function AlertDialogSlide(   {url}   ) {
       >
         
         <DialogContent>
-            <img src={"https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl" +  url   } className='w-28 h-28'  alt="" />
+            <img src={"https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl=" +  url   } className='w-28 h-28'  alt="" />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose}>Agree</Button>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Download</Button>
         </DialogActions>
       </Dialog>
     </div>
