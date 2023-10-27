@@ -60,7 +60,7 @@ export default function BasicTable() {
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.clicks}</TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.status=="ACTIVE" ? (<p className='text-green-500 font-extrabold'  >{row.status}</p>) : (<p>{row.status}</p>)}</TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right"><button className='text-red-500 text-lg' onClick={(e)=> handleDeleteUrl  (e ,row.linkShortUrl)} >  <AiFillDelete   /> </button></TableCell>
-              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.clicks}</TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right"> <   img src={"https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl=" + row.linkShortUrl} className='w-4 h-4'  />    </TableCell>
             </TableRow>
           )).slice(prevPage,nextPage)}
         </TableBody>
