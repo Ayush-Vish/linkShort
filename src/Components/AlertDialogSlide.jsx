@@ -26,7 +26,7 @@ export default function AlertDialogSlide(   {url}   ) {
   return (
     <div>
       <Button  onClick={handleClickOpen}>
-            <img src={URL   }   className='w-4 h-4'  alt="QR" />
+            <img src={URL}   className='w-4 h-4'  alt="QR" />
       </Button>
       <Dialog
         open={open}
