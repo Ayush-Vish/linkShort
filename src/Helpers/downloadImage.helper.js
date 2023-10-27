@@ -1,11 +1,20 @@
-function downloadImage (   link , url     )  { 
+async function downloadImage (   link , url     )  { 
 
-    var a = document.createElement('a');
-    a.href = link;
-    a.download = `${url}/${link}.png`
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    const response = await fetch(link);
+
+  const blobImage = await response.blob();
+
+  const href = URL.createObjectURL(blobImage);
+
+  const anchorElement = document.createElement('a');
+  anchorElement.href = href;
+  anchorElement.download = url;
+
+  document.body.appendChild(anchorElement);
+  anchorElement.click();
+
+  document.body.removeChild(anchorElement);
+  window.URL.revokeObjectURL(href);
  
 }
 
