@@ -28,12 +28,12 @@ function Navbar () {
                 
             <div className="flex items-center justify-center gap-3 ">
                 <Link to="/login" >
-                    <button className="p-2 flex justify-center text-[#ffffff]  items-center bg-primary-grey border rounded-2xl px-3 hover:bg-primary-blue hover:shadow-[10px_9px_22px_0px_rgba(20,78,227,0.38)]  transition-all ease-in-out duration-300  ">
+                    <button className="p-2 flex justify-center text-[#ffffff]  items-center bg-primary-grey  rounded-2xl px-3 hover:bg-primary-blue hover:shadow-[10px_9px_22px_0px_rgba(20,78,227,0.38)]  transition-all ease-in-out duration-300  ">
                         Login   
                     </button>
                 </Link> 
                 <Link to="/register">
-                    <button className=" p-2  justify-center text-[#ffffff]  items-center bg-primary-grey border rounded-2xl px-3 hover:bg-primary-blue hover:shadow-[10px_9px_22px_0px_rgba(20,78,227,0.38)]  transition-all ease-in-out duration-300   hidden md:block ">
+                    <button className=" p-2  justify-center text-[#ffffff]  items-center bg-primary-grey  rounded-2xl px-3 hover:bg-primary-blue hover:shadow-[10px_9px_22px_0px_rgba(20,78,227,0.38)]  transition-all ease-in-out duration-300   hidden md:block ">
                         Register Now
                     </button>
                 </Link>

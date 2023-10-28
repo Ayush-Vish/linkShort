@@ -13,9 +13,9 @@ function HomePage() {
     
     return (
         <div  className= " flex min-h-screen max-h-full  items-center flex-col  relative  gap-3 bg-primary-black ">
-            <img  className="  absolute  sm:top-[-100px] xx_small:top-[0px]  sm:right-10 z-0 xx_small:h-[150px]  xx_small:right-2  " src={img2} alt="" />
-            <img  className="  absolute  top-[500px] h-[200px] right-[290px] z-0 xx_small:h-[100px] xx_small:top-[400px]  " src={img2} alt="" />
-            <img  className="  absolute  sm:top-[300px] sm:h-[250px]  xx_small:top-[100px] xx_small:h-[200px]  xx_small:left-7  sm:left-[150px] z-0   " src={img3} alt="" />
+            <img  className="  absolute  sm:top-[-100px] xx_small:top-[0px]  sm:right-10 z-0 xx_small:h-[150px]  xx_small:right-2 sm:h-[400px]  " src={img2} alt="" />
+            <img  className="  absolute  top-[500px] sm:h-[200px] right-[250px] z-0 xx_small:h-[100px] xx_small:top-[400px]  " src={img2} alt="" />
+            <img  className="  absolute  sm:top-[300px] sm:h-[400px]  xx_small:top-[100px] xx_small:h-[200px]  xx_small:left-7  sm:left-[150px] z-0   " src={img3} alt="" />
             <div className="w-full z-30 ">
                 <Navbar/>  
             </div>
