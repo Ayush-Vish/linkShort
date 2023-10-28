@@ -41,7 +41,7 @@ export default function BasicTable() {
       <Table sx={{ minWidth: 650   }} aria-label="simple table">
         <TableHead> 
           <TableRow  >
-            <TableCell sx={{color:"white" , fontWeight:"900" , width:"100px" , background:"red"}} >Original URL</TableCell>
+            <TableCell sx={{color:"white" , fontWeight:"900"}} >Original URL</TableCell>
             <TableCell sx={{color:"white" , fontWeight:"900"}} align="right">LinkShort URL </TableCell>
             <TableCell sx={{color:"white" , fontWeight:"900"}} align="right">Clicks</TableCell>
             <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">Status</TableCell>
@@ -56,10 +56,10 @@ export default function BasicTable() {
               key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell  sx={{color:"white" , fontWeight:"900", width:"100px", background:"red"}} component="th" scope="row">  <a className='line-clamp-2' href={row.longUrl}>{row.longUrl}</a>  </TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} component="th" scope="row"><div className='w-24 line-clamp-1' >  <a href={row.longUrl}>{row.longUrl}</a> </div> </TableCell>
               <TableCell  sx={{color:"#EB568E" , fontWeight:"900"}} align="right">  <a href={row.linkShortUrl}> { row.linkShortUrl} </a>  {" "}  </TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.clicks}</TableCell>
-              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.status=="ACTIVE" ? (<p className='text-green-500 font-extrabold'  >{row.status}</p>) : (<p className='bg-red-500' >{row.status}</p>)}</TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.status=="ACTIVE" ? (<p className='text-green-500 font-extrabold'  >{row.status}</p>) : (<p>{row.status}</p>)}</TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right"><button className='text-red-500 text-lg' onClick={(e)=> handleDeleteUrl  (e ,row.linkShortUrl)} >  <AiFillDelete   /> </button></TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">  <AlertDialogSlide    url={row.linkShortUrl}  />    </TableCell>
             </TableRow>

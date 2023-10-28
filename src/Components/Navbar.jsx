@@ -20,7 +20,7 @@ function Navbar () {
                 <button  className=" xx_small:hidden flex-col extra_small:hidden sm:hidden md:block xx_small:text-xl  p-1 flex justify-center text-[#ffffff]  items-center bg-primary-grey border rounded-2xl px-3 hover:bg-primary-blue hover:shadow-[10px_9px_22px_0px_rgba(20,78,227,0.38)]  transition-all ease-in-out duration-300  ">
                     <span> <FadeMenu/>  </span> 
                 </button>
-                <button  className="  flex-col md:hidden  border-primary-grey  flex justify-center text-[#ffffff]  items-center bg-primary-grey border rounded-lg  hover:bg-primary-blue hover:shadow-[10px_9px_22px_0px_rgba(20,78,227,0.38)]  transition-all ease-in-out duration-300  ">
+                <button  className="  flex-col md:hidden  border-primary-grey  flex justify-center text-[#ffffff]  items-center bg-primary-grey  rounded-lg  hover:bg-primary-blue hover:shadow-[10px_9px_22px_0px_rgba(20,78,227,0.38)]  transition-all ease-in-out duration-300  ">
                       <span><FadeMenu/></span>
                  </button>
                 </div>
