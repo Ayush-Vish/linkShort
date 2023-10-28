@@ -6,6 +6,7 @@ import SearchInput from "../Components/SearchInput";
 import BasicTable from "../Components/Stats";
 import img2 from "../assets/img2.png";
 import img3 from "../assets/img3.png";
+import Guy from "../Components/Guy";
 
 function HomePage() { 
     const {isLoggedIn} = useSelector(state => state.auth);
@@ -30,12 +31,16 @@ function HomePage() {
             </div> 
             
             {
-                isLoggedIn &&  allUrls && (
+                isLoggedIn &&  allUrls ? (
                     <div className="w-3/4 z-10">
                         <BasicTable/>
 
                     </div>
-                ) 
+                ) :(
+                    <div className="w-2/4 h-[100px] z-10 text-white flex items-center justify-center text-3xl font-bold text-center" >
+                        <h1>Login to See Your Urls</h1>
+                    </div>
+                )
             }
         </div>
     )
