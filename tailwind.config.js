@@ -12,7 +12,7 @@ export default {
       },
       screens : {
         "extra_small" :"400px", 
-        "xx_small" : "300px"
+        "xx_small" : "270px"
       }
     },
   },

@@ -8,9 +8,8 @@ const initialState =  {
 
 export const createNewAccount = createAsyncThunk("auth/signup", async (data ) => {
     try {
-        console.log(data)
         const response = axiosInstance.post("/api/v1/user/register"  ,data)  
-        console.log((await response).data)
+
         toast.promise(response , {
             loading : "Wait Creating Account", 
             success : "User Created Successfully", 

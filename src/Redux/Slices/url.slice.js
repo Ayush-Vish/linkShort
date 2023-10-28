@@ -17,7 +17,6 @@ export const getShort = createAsyncThunk("/url/getUrl" , async ( url   ) => {
             success :"Created Short Url",
             error : "Failed to create Short Url"
         })  
-        console.log((await response).data)
 
         return (await response).data; 
 

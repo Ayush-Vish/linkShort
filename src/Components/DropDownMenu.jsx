@@ -20,7 +20,6 @@ export default function FadeMenu() {
   }; 
   async function handleLogout( ) {
     const response = await dispatch(logout()) ;
-    console.log(response) ;
     handleClose();
 
   } 

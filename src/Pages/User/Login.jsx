@@ -55,14 +55,9 @@ function Login() {
 
 
   return (
-    <div className=" text-white flex w-full  items-center  justify-around h-[100vh]  gap-3 bg-primary-black ">
-      <div className=' extra_small:hidden  xx_small:hidden sm:hidden md:flex w-1/2 flex items-center justify-center'>
-        <h1>
-            Roll the Carpet !
-        </h1>
-         
-      </div>
-      <div className= ' sm:flex w-1/2 flex justify-center items-center  '>
+    <div className=" text-white flex w-full  items-center  justify-center gap-3 h-[100vh]   bg-primary-black ">
+      
+      <div className= ' sm:flex  flex justify-center items-center    '>
         <form onSubmit={loginAccount} className="border h-[70vh] flex flex-col justify-center items-center p-6 gap-4 "  >
             <div className='flex flex-col w-full'>
                 <h2 className='text-2xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-semibold '>SignIn</h2> 
