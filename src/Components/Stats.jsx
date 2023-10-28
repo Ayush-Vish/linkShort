@@ -56,7 +56,7 @@ export default function BasicTable() {
               key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell  sx={{color:"white" , fontWeight:"900"}} component="th" scope="row">  <a href={row.longUrl}>{row.longUrl}</a>  </TableCell>
+              <TableCell  sx={{color:"white" , fontWeight:"900"}} component="th" scope="row">  <a className='line-clamp-2 w-1/2' href={row.longUrl}>{row.longUrl}</a>  </TableCell>
               <TableCell  sx={{color:"#EB568E" , fontWeight:"900"}} align="right">  <a href={row.linkShortUrl}> { row.linkShortUrl} </a>  {" "}  </TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.clicks}</TableCell>
               <TableCell  sx={{color:"white" , fontWeight:"900"}} align="right">{row.status=="ACTIVE" ? (<p className='text-green-500 font-extrabold'  >{row.status}</p>) : (<p>{row.status}</p>)}</TableCell>
