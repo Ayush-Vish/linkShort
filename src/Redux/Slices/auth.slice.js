@@ -3,7 +3,7 @@ import axiosInstance from "../../Helpers/axios.helper"
 import {toast} from "react-hot-toast"
 const initialState =  {
     isLoggedIn : localStorage.getItem("isLoggedIn") || false, 
-    data :JSON.parse( localStorage.getItem("data" ) )|| { } 
+    data :( localStorage.getItem("data" ) &&   JSON.parse( localStorage.getItem("data" ) ))|| { } 
 }
 
 export const createNewAccount = createAsyncThunk("auth/signup", async (data ) => {
@@ -58,17 +58,25 @@ const authSlice  = createSlice({
     reducers : {}, 
     extraReducers :(builder) => { 
         builder
-        .addCase(login.fulfilled , (state ,action) => {
+        .addCase(login.fulfilled , (state ,action) => { 
+            console.log("Fulfilled")
             localStorage.setItem("data" ,JSON.stringify(action?.payload?.user)); 
             localStorage.setItem("isLoggedIn" ,true ) 
             state.isLoggedIn =true 
             state.data =action?.payload?.user
+        })
+        .addCase(login.rejected , (state ,action ) => { 
+            console.log("rejected")
+            localStorage.clear() ;
+            state.data = {} ;
+            state.isLoggedIn =false;
         })
         .addCase(logout.fulfilled, (state ,action )=> {
             localStorage.clear() ;
             state.data = {} ;
             state.isLoggedIn =false;
         })
+        
         
     }
 })

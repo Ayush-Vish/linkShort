@@ -45,12 +45,12 @@ function SignUp() {
   return (
     <div className=" text-white flex w-full  items-center  justify-around h-[100vh]  gap-3 bg-primary-black ">
       
-      <div className=" sm:flex w-1/2 flex justify-center items-center  ">
+      <div className=" sm:flex w-1/2 flex justify-center items-center  xx_small:w-[90%] md:w-[50%]    ">
         <form
           onSubmit={createAccount}
-          className="border h-[70vh] rounded-lg flex flex-col justify-center items-center p-6 gap-4 "
+          className="border h-[80vh]  xx_small:w-[90%] md:w-[50%]   rounded-lg flex flex-col justify-center items-center p-6 gap-4 "
         >
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full items-center  " >
             <h2 className="text-2xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-semibold ">
               SignUp
             </h2>
@@ -103,7 +103,7 @@ function SignUp() {
 
           <div>
             <p>
-              Already have a Account <Link to="/login">SignUp</Link>
+              Already have a Account {" "} <Link className="text-green-500" to="/login"> SignUp</Link>
             </p>
           </div>
         </form>

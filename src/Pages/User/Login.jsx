@@ -54,11 +54,11 @@ function Login() {
 
 
   return (
-    <div className=" text-white flex w-full  items-center  justify-center gap-3 h-[100vh]   bg-primary-black ">
+    <div className=" text-white flex w-[full]  items-center  justify-center gap-3 h-[100vh]   bg-primary-black ">
       
-      <div className= ' sm:flex  flex justify-center items-center    '>
-        <form onSubmit={loginAccount} className="border  shadow-primary-pink rounded-lg h-[70vh] flex flex-col justify-center items-center p-6 gap-4   "  >
-            <div className='flex flex-col w-full'>
+      <div className= ' sm:flex  flex justify-center items-center xx_small:w-[90%] md:w-[50%]     '>
+        <form onSubmit={loginAccount} className="border  xx_small:w-[90%] md:w-[50%]    shadow-primary-pink rounded-lg h-[70vh] flex flex-col justify-center items-center p-6 gap-4   "  >
+            <div className='flex flex-col w-full items-center'>
                 <h2 className='text-2xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-semibold '>SignIn</h2> 
                 <p>
                     Just Some details to get you in ....
@@ -77,7 +77,7 @@ function Login() {
               <button type="submit" className='bg-primary-grey py-2 px-3 rounded-lg hover:bg-primary-blue transition-all ease-in-out duration-300'>SignIn</button>
             </div>
             <div>
-              <p>Dont have a Account ?  <Link to="/signup" > SignUp </Link></p>
+              <p>Dont have a Account ? {" "}  <Link className='text-green-500'  to="/signup" > SignUp </Link></p>
             </div>
 
 
