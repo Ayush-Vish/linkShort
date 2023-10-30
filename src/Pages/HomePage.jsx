@@ -37,7 +37,7 @@ function HomePage() {
 
                     </div>
                 ) :(
-                    <div className="w-2/4 h-[100px] z-10 text-white flex items-center justify-center text-3xl font-bold text-center" >
+                    <div className="  bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-['Roboto'] tracking-wide  break    w-2/4 h-[100px] z-10 flex items-center justify-center text-3xl font-bold text-center" >
                         <h1>Login to See Your Urls</h1>
                     </div>
                 )
