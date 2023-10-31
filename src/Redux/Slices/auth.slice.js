@@ -65,13 +65,13 @@ const authSlice  = createSlice({
             state.isLoggedIn =true 
             state.data =action?.payload?.user
         })
-        .addCase(login.rejected , (state ,action ) => { 
+        .addCase(login.rejected , (state  ) => { 
             console.log("rejected")
             localStorage.clear() ;
             state.data = {} ;
             state.isLoggedIn =false;
         })
-        .addCase(logout.fulfilled, (state ,action )=> {
+        .addCase(logout.fulfilled, (state  )=> {
             localStorage.clear() ;
             state.data = {} ;
             state.isLoggedIn =false;
