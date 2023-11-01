@@ -8,6 +8,8 @@ import img2 from "../assets/img2.png";
 import img3 from "../assets/img3.png";
 import { useEffect } from "react";
 import { getAllUrls } from "../Redux/Slices/url.slice";
+import { Link } from "react-router-dom";
+
 // import Guy from "../Components/Guy";
 
 function HomePage() { 
@@ -47,7 +49,7 @@ function HomePage() {
                 !isLoggedIn  ? (
                     
                     <div className="  bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-['Roboto'] tracking-wide  break    w-2/4 h-[100px] z-10 flex items-center justify-center text-3xl font-bold text-center" >
-                        <h1>Login to See Your Urls</h1>
+                        <h1>  <Link to="/login" >Login </Link> to See Your Urls</h1>
                     </div>
                 ) : (
                     allUrls.length !==0 ? (
