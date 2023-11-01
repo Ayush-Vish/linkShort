@@ -13,7 +13,7 @@ function Navbar () {
     
     return ( 
         <div  className="flex justify-between p-4  items-center  text-[#ffffff] "  >
-            <div className="text-4xl bg-clip-text text-transparent bg-gradient-to-r font-semibold from-pink-500 to-violet-500 ">LinkShort</div>
+            <div className="text-4xl bg-clip-text text-transparent bg-gradient-to-r font-semibold font-['Roboto'] from-pink-500 to-violet-500 ">LinkShort</div>
             {isLoggedIn ? ( 
                 <div>
 

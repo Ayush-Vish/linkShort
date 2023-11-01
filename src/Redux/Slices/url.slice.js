@@ -30,7 +30,7 @@ export const getAllUrls = createAsyncThunk("/url/getUserUrls" , async ( ) => {
         const response  = axiosInstance.get("/url/getAllUrls") 
         toast.promise(response ,  {
             loading:"Wait Loding Urls ",
-            success : "Urls fetchde Successfully", 
+            success : "Urls fetched Successfully", 
             error : "Error in Loding Urls" 
         }) 
         return (await response).data;

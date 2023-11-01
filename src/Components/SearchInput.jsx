@@ -62,8 +62,8 @@ function SearchInput()  {
                 ):(
 
                 <div>
-                    <button className="bg-primary-blue  md:hidden  rounded-full text-white p-3" type="submit"> <BsArrowRightCircleFill/> </button>
-                    <button className="bg-primary-blue  xx_small:hidden  extra_small:hidden sm:hidden md:flex rounded-full text-white p-3" type="submit"> Shorten Now! </button>
+                    <button className="bg-primary-blue hover:bg-blue-800  transition-all ease-in-out duration-300  md:hidden  rounded-full text-white p-3" type="submit"> <BsArrowRightCircleFill/> </button>
+                    <button className="bg-primary-blue hover:bg-blue-800 transition-all ease-in-out duration-300  xx_small:hidden  extra_small:hidden sm:hidden md:flex rounded-full text-white p-3" type="submit"> Shorten Now! </button>
                 </div>
                 )}
 

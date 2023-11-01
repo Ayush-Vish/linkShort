@@ -7,7 +7,7 @@ function Hero ( )  {
             </div> 
             
             <div className=" w-3/4 m-3 ">
-                <p className=" text-center text-white text-base  " >
+                <p className=" text-center font-semibold text-white text-base  " >
                     LinkShort    is an efficient and easy to use URL shortening Service that streamlines your online experiences.
                 </p>
             </div>

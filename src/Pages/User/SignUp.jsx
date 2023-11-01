@@ -98,12 +98,12 @@ function SignUp() {
             type="submit"
             className="bg-primary-grey py-2 px-3 rounded-lg  hover:bg-primary-blue transition-all ease-in-out duration-300 "
           >
-            Register
+            SignUp
           </button>
 
           <div>
             <p>
-              Already have a Account {" "} <Link className="text-green-500" to="/login"> SignUp</Link>
+              Already have a Account {" "} <Link className="text-green-500" to="/login"> SignIn</Link>
             </p>
           </div>
         </form>
