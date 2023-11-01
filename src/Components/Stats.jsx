@@ -32,9 +32,7 @@ export default function BasicTable() {
       await dispatch(deleteUrl(url)) 
       await dispatch(getAllUrls()) ;
     }
-    React.useEffect(()=>{
-        getData();
-    },[]) 
+    
 
   return (
     <TableContainer className='  backdrop-blur-sm ' component={Paper} sx={{background:"transparent"}} >

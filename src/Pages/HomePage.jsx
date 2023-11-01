@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DisplayUrl from "../Components/DisplayUrl";
 import Hero from "../Components/Hero";
 import Navbar from "../Components/Navbar";
@@ -6,11 +6,24 @@ import SearchInput from "../Components/SearchInput";
 import BasicTable from "../Components/Stats";
 import img2 from "../assets/img2.png";
 import img3 from "../assets/img3.png";
-import Guy from "../Components/Guy";
+import { useEffect } from "react";
+import { getAllUrls } from "../Redux/Slices/url.slice";
+// import Guy from "../Components/Guy";
 
 function HomePage() { 
     const {isLoggedIn} = useSelector(state => state.auth);
-    const {allUrls} = useSelector(state => state.url) 
+    const {allUrls} = useSelector(state => state.url)
+    
+    const dispatch  = useDispatch() ; 
+    async function getData  () { 
+        if(isLoggedIn)  { 
+
+            await dispatch(getAllUrls()) 
+        }
+    }
+    useEffect(() => { 
+        getData()
+    },  [])
     
     return (
         <div  className= " flex min-h-screen   items-center flex-col  relative  gap-3 bg-primary-black ">
