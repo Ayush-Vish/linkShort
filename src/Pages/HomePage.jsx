@@ -52,7 +52,7 @@ function HomePage() {
                         <h1>  <Link to="/login" >Login </Link> to See Your Urls</h1>
                     </div>
                 ) : (
-                    allUrls.length !==0 ? (
+                    allUrls  ? (
                         <div className="w-3/4 z-10">
                             <BasicTable/>
 
