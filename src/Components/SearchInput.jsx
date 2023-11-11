@@ -7,7 +7,8 @@ import { getAllUrls, getShort } from "../Redux/Slices/url.slice";
 import { ThreeDots } from "react-loader-spinner";
 function SearchInput()  { 
     const data= useSelector(state => state.url ) 
-
+    const [showCustom , setShowCustom] = useState(false);
+    
     const [url  ,setUrl ] = useState ("") 
     const dispatch= useDispatch()
     const [loader, showLoader]  = useState(false);
@@ -42,7 +43,9 @@ function SearchInput()  {
             <form onSubmit={(e) => getShortUrl(e)} className="text-white flex items-center justify-around p-3  rounded-2xl bg-primary-grey  border-2 border-[#353C4A ] " >
                  
                 <label  className="text-white text-2xl" htmlFor="url">
-                     < FiLink/>
+                      <a onClick={()=>setShowCustom(!showCustom)}>
+                      < FiLink/>
+                    </a> 
                 </label>
                 
                 <input value={url}  onChange={handleUserInput} className=" bg-transparent outline-none line-clamp-1  text-xl w-3/4" type="text" name="url" id="url"  placeholder="Enter the Link Here " /> 
@@ -67,7 +70,20 @@ function SearchInput()  {
                 </div>
                 )}
 
+
+
             </form>
+
+            {
+                showCustom && (
+                    <div className="text-white p-2 flex items-center justify-center  " >
+                        <button disabled >
+                            <span className="font-semibold text-primary-pink  ">https://linkshorts.vercel.app/</span>
+                        </button>
+                        <input className="bg-transparent outline-none text-green-400  rounded-md font-bold " type="text" placeholder="Custom hash" />
+                    </div>
+                )
+            }
         </div>
     )
 }

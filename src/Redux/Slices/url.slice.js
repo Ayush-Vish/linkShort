@@ -5,7 +5,8 @@ import toast from "react-hot-toast"
 const initialState = {
     shortUrl : "",
     longUrl:"", 
-    allUrls : []
+    allUrls : [],
+    customUrlDiv:false
 }
 
 export const getShort = createAsyncThunk("/url/getUrl" , async ( url   ) => { 
