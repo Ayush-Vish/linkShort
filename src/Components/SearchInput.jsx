@@ -3,7 +3,7 @@ import {BsArrowRightCircleFill }  from "react-icons/bs"
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUrls, getShort } from "../Redux/Slices/url.slice";
+import { getAllUrls, getCustomUrl, getShort } from "../Redux/Slices/url.slice";
 import { ThreeDots } from "react-loader-spinner";
 function SearchInput()  { 
     const data= useSelector(state => state.url ) 
@@ -12,7 +12,8 @@ function SearchInput()  {
     const [url  ,setUrl ] = useState ("") 
     const dispatch= useDispatch()
     const [loader, showLoader]  = useState(false);
-
+    const [hash  ,setHash ] =useState("")
+    console.log(hash)
     function handleUserInput(e) { 
         const  { value } = e.target;  
         
@@ -24,14 +25,25 @@ function SearchInput()  {
             toast.error("Please give a Url");
             return ;
         }
-        const obj ={
-            "longUrl":url
-        }
-        const response = await  dispatch(getShort(obj   ));
-        if(response?.payload?.success) { 
-            toast.success("Url Created SuccessFully ") 
-            await dispatch(getAllUrls());
-            
+        
+        if(!showCustom && !hash ) { 
+            const obj ={
+                "longUrl":url
+            }
+
+            const response = await  dispatch(getShort(obj   ));
+            if(response?.payload?.success) { 
+                toast.success("Url Created SuccessFully ") 
+                await dispatch(getAllUrls());
+                
+            }
+        }else { 
+
+            const obj ={
+                "longUrl":url, 
+                "hash":hash
+            }
+            const response =await dispatch(getCustomUrl(obj))
         }
         
 
@@ -80,7 +92,7 @@ function SearchInput()  {
                         <button disabled >
                             <span className="font-semibold text-primary-pink  ">https://linkshorts.vercel.app/</span>
                         </button>
-                        <input className="bg-transparent outline-none text-green-400  rounded-md font-bold " type="text" placeholder="Custom hash" />
+                        <input className="bg-transparent outline-none text-green-400  rounded-md font-bold " type="text" name="hash"  value={hash} onChange={(e)=> setHash(e.target.value)} placeholder="Custom hash" />
                     </div>
                 )
             }

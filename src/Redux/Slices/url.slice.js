@@ -60,6 +60,27 @@ export const deleteUrl = createAsyncThunk("/url/delete" , async (url ) => {
     }
 })
 
+
+
+export const getCustomUrl = createAsyncThunk("/url/createCustomUrl" ,async(obj) => {
+    try {
+        const body ={
+            "longUrl":obj.longUrl
+        }
+        const response = axiosInstance.post(`/url/custom/${obj.hash}`, body);
+
+        toast.promise(response , {
+            loading : "Shortening you URL " ,
+            success : "Custom URL created", 
+            error:"Failed to generate custom url"
+        })
+        return (await response).data;
+
+    } catch (error) {
+        toast.error(error?.response?.data?.message)
+    }
+})
+
 const urlSlice = createSlice({
     name : "url", 
     initialState,
@@ -72,6 +93,10 @@ const urlSlice = createSlice({
         .addCase(getAllUrls.fulfilled , (state , action)=>{ 
             state.allUrls = action.payload?.urls
         }) 
+        .addCase(getCustomUrl.fulfilled  , (state ,action) => { 
+            state.longUrl = action.payload?.longUrl,
+            state.shortUrl = action.payload?.shortUrl
+        })
         
 
         
