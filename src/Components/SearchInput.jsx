@@ -13,7 +13,6 @@ function SearchInput()  {
     const dispatch= useDispatch()
     const [loader, showLoader]  = useState(false);
     const [hash  ,setHash ] =useState("")
-    console.log(hash)
     function handleUserInput(e) { 
         const  { value } = e.target;  
         
@@ -26,7 +25,7 @@ function SearchInput()  {
             return ;
         }
         
-        if(!showCustom && !hash ) { 
+        if(!showCustom && !hash ) {  
             const obj ={
                 "longUrl":url
             }
@@ -44,6 +43,12 @@ function SearchInput()  {
                 "hash":hash
             }
             const response =await dispatch(getCustomUrl(obj))
+            if(response?.payload?.success) { 
+                toast.success("Url Created SuccessFully ") 
+                setHash("")
+                await dispatch(getAllUrls());
+                
+            }
         }
         
 

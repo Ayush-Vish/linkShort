@@ -71,10 +71,19 @@ function HomePage() {
                     )
                 )
             }
+            {
+                allUrls && isLoggedIn ? (
 
-            <div className="w-full z-10  static   bg-primary-grey">
-                <Footer/>
-            </div>    
+                    <div className="w-full z-10 bottom-0   bg-primary-grey">
+                        <Footer/>
+                    </div>    
+                ): (
+                    <div className="w-full z-10 sm:absolute bottom-0   bg-primary-grey">
+                        <Footer/>
+                    </div>    
+
+                )
+            }
         </div>
     )
 }
