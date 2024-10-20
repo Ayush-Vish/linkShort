@@ -12,7 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function AlertDialogSlide(   {url}   ) { 
-  const URL ="https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl=" +  url
+  const URL ="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +  url
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
